@@ -1,0 +1,29 @@
+.contained {
+	padding: 0.5rem 1rem;
+	border-radius: 2rem;
+	text-transform: none;
+	font-size: inherit;
+	font-weight: inherit;
+	font-family: inherit;
+}
+
+.text {
+	padding: 0.75rem;
+	text-transform: none;
+	font-size: inherit;
+	font-weight: inherit;
+	font-family: inherit;
+}
+
+.text:hover {
+	background: none;
+}
+
+.icon {
+	font-weight: inherit;
+	color: inherit;
+	font-size: inherit;
+	border: none;
+	background: none;
+	cursor: pointer;
+}

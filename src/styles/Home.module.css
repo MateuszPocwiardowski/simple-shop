@@ -1,0 +1,18 @@
+.home {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem 0;
+	margin: 2rem 0;
+}
+
+@media (min-width: 992px) {
+	.home {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		gap: 4rem 2rem;
+	}
+}

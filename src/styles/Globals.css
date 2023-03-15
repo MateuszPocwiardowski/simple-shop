@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+:root {
+	--color-black: #000;
+	--color-white: #fff;
+	--color-red: #921515;
+	--color-gray-100: #f7f7f7;
+	--color-gray-200: #e6e9ee;
+	--color-gray-300: #dde0e4;
+	--color-gray-400: #818890;
+	--color-gray-500: #535661;
+	--color-gray-600: #4b4c53;
+	--color-gray-700: #3a3d4a;
+	--color-gray-800: #2e3039;
+	--color-gray-900: #1f2028;
+	--color-cream-100: #fbfafa;
+	--color-cream-300: #f6eddd;
+	--color-cream-600: #f4dcc1;
+	--color-cream-900: #d4b59d;
+
+	--font-main: 'Roboto', sans-serif;
+
+	--font-weight-thin: 100;
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-bold: 700;
+
+	--font-size-xs: 0.8rem;
+	--font-size-s: 1rem;
+	--font-size-m: 1.2rem;
+	--font-size-l: 1.5rem;
+	--font-size-xl: 2rem;
+	--font-size-xxl: 3rem;
+
+	--max-width: 1400px;
+	--center-content: 0 auto;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: var(--color-cream-100);
+	font-family: var(--font-main);
+	font-size: var(--font-size-s);
+	font-weight: var(--font-weight-normal);
+	color: var(--color-gray-800);
+}
