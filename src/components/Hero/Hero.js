@@ -23,7 +23,7 @@ const Hero = () => {
 	return (
 		<section className={styles.hero}>
 			{HERO_DATA.map(({ src, alt }) => (
-				<img src={src} alt={alt} />
+				<img key={alt} src={src} alt={alt} />
 			))}
 		</section>
 	)

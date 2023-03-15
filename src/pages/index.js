@@ -1,10 +1,13 @@
 import Head from 'next/head'
+import { MongoClient } from 'mongodb'
 
 import Hero from '@Components/Hero/Hero'
+import Products from '@Components/Products/Products'
+import Tip from '@Components/Tip/Tip'
 
-import styles from '@Source/styles/Home.module.css'
+import styles from '@Styles/Home.module.css'
 
-export default function Home() {
+const Home = ({ products }) => {
 	return (
 		<>
 			<Head>
@@ -15,7 +18,40 @@ export default function Home() {
 			</Head>
 			<main className={styles.main}>
 				<Hero />
+				<Products products={products} />
+				<Tip />
 			</main>
 		</>
 	)
+}
+
+export default Home
+
+export const getStaticProps = async context => {
+	const client = await MongoClient.connect(
+		'mongodb+srv://mpocwiardowski:tnmLqEI56WyjzMJU@cluster0.vlusofg.mongodb.net/cars?retryWrites=true&w=majority'
+	)
+
+	const db = client.db()
+	const productsCollection = db.collection('products')
+	const products = await productsCollection.find().toArray()
+
+	client.close()
+
+	return {
+		props: {
+			products: products.map(product => ({
+				id: product._id.toString(),
+				brand: product.brand,
+				title: product.title,
+				description: product.description,
+				category: product.category,
+				price: product.price,
+				code: product.code,
+				quantity: product.quantity,
+				images: product.images,
+			})),
+		},
+		revalidate: 1,
+	}
 }

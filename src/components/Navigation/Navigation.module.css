@@ -6,7 +6,7 @@
 	justify-content: space-between;
 	align-content: center;
 	align-items: center;
-	color: var(--color-gray-600);
+	color: var(--color-gray-700);
 	margin: var(--center-content);
 	padding: 1rem;
 }
@@ -25,8 +25,8 @@
 .items {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+	justify-content: flex-end;
+	align-items: flex-end;
 	column-gap: 2rem;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .item button {
-	color: var(--color-gray-600);
+	color: var(--color-gray-700);
 }
 
 .logo a,

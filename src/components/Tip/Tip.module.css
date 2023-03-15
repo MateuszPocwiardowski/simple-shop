@@ -1,0 +1,25 @@
+.tip {
+	width: 100%;
+	max-width: 500px;
+	background-color: var(--color-gray-300);
+	padding: 1rem;
+}
+
+.title {
+	font-size: var(--font-size-m);
+    margin-bottom: .5rem;
+}
+
+.text {
+	margin-bottom: 1rem;
+}
+
+.button {
+    border: none;
+	background-color: var(--color-gray-700);
+	color: var(--color-gray-100);
+    font-size: var(--font-size-s);
+    font-weight: inherit;
+    font-family: inherit;
+	padding: 0.75rem 1.5rem;
+}

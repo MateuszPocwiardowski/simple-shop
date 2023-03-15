@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
 	--color-black: #000;
@@ -18,7 +18,7 @@
 	--color-cream-600: #f4dcc1;
 	--color-cream-900: #d4b59d;
 
-	--font-main: 'Roboto', sans-serif;
+	--font-main: 'Playfair Display', serif;
 
 	--font-weight-thin: 100;
 	--font-weight-light: 300;

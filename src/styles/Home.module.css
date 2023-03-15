@@ -1,18 +1,19 @@
-.home {
+.main {
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	gap: 2rem 0;
-	margin: 2rem 0;
+	row-gap: 2rem;
 }
 
 @media (min-width: 992px) {
-	.home {
-		flex-direction: row;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		gap: 4rem 2rem;
+	.main {
+		row-gap: 4rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	.main {
+		row-gap: 6rem;
 	}
 }

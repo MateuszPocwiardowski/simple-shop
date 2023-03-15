@@ -12,7 +12,7 @@
 	flex: 0 0 60%;
 	justify-content: center;
 	align-items: center;
-	color: var(--color-gray-600);
+	color: var(--color-gray-700);
 	column-gap: 5px;
 }
 
@@ -31,5 +31,5 @@
 
 .links svg {
 	font-size: 26px;
-	color: var(--color-gray-600);
+	color: var(--color-gray-700);
 }
