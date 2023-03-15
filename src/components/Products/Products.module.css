@@ -48,4 +48,11 @@
 	font-weight: inherit;
 	font-family: inherit;
 	cursor: pointer;
+	transition: 0.3s all;
+	-webkit-transition: 0.3s all;
+}
+
+.button:hover {
+	filter: brightness(70%);
+	-webkit-filter: brightness(70%);
 }

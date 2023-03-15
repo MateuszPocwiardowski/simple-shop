@@ -15,6 +15,8 @@ All commands you can run from the root folder (using command prompt):
 
 ## Live
 
+https://so-simple-shop.vercel.app/
+
 ## Tech-stack
 
 - Next.js 13
@@ -23,4 +25,10 @@ All commands you can run from the root folder (using command prompt):
 
 ## Screenshots
 
+![Screenshot of ladning page](/public/landing.png?raw=true)
+
 ## TODO
+- Add carousel with images
+- Add products related to category
+- Add more sections on main page
+- Improve styling
