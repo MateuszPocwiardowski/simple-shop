@@ -50,6 +50,9 @@
 	cursor: pointer;
 	transition: 0.3s all;
 	-webkit-transition: 0.3s all;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
 }
 
 .button:hover {
