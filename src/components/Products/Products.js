@@ -1,12 +1,8 @@
-import { useRouter } from 'next/router'
-
 import Product from './Product/Product'
 
 import styles from './Products.module.css'
 
 const Products = ({ products }) => {
-	const router = useRouter()
-
 	return (
 		<section className={styles.products}>
 			<h3 className={styles.title}>Products</h3>
@@ -17,11 +13,9 @@ const Products = ({ products }) => {
 				Our furniture pieces are crafted with the finest materials and designed to elevate any space with their elegance
 				and functionality. Shop with us today and discover the perfect addition to your luxurious lifestyle.
 			</p>
-			<div className={styles.items}>
+			<div className={styles.cards}>
 				{products.map(({ id, title, price, images }) => (
-					<div className={styles.item}>
-						<Product title={title} price={price} images={images} />
-					</div>
+					<Product id={id} title={title} price={price} images={images} />
 				))}
 			</div>
 		</section>

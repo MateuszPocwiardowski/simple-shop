@@ -41,15 +41,9 @@ export const getStaticProps = async context => {
 	return {
 		props: {
 			products: products.map(product => ({
+				...product,
+				_id: null,
 				id: product._id.toString(),
-				brand: product.brand,
-				title: product.title,
-				description: product.description,
-				category: product.category,
-				price: product.price,
-				code: product.code,
-				quantity: product.quantity,
-				images: product.images,
 			})),
 		},
 		revalidate: 1,

@@ -1,17 +1,17 @@
 .card {
 	width: 100%;
-	max-width: 300px;
-	max-height: 300px;
+	max-width: 100%;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	row-gap: 0.5rem;
+	transition: 0.3s all;
+	-webkit-transition: 0.3s all;
+	cursor: pointer;
 }
 
-.swiper {
-	height: 100%;
-	width: 100%;
-	--swiper-navigation-color: #fff;
-	--swiper-theme-color: #fff;
+.card:hover {
+	filter: brightness(70%);
+	-webkit-filter: brightness(70%);
 }
 
 .image {
