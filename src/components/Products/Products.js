@@ -19,14 +19,14 @@ const Products = ({ products }) => {
 			</p>
 			<div className={styles.container}>
 				{products.map(({ id, title, price, images }) => (
-					<button
+					<div
 						key={title}
 						className={styles.button}
 						onClick={() => {
 							router.push(`/products/${id}`)
 						}}>
 						<Product title={title} price={price} images={images} />
-					</button>
+					</div>
 				))}
 			</div>
 		</section>

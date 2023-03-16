@@ -21,9 +21,13 @@
 .title {
 	text-align: center;
 	font-weight: var(--font-weight-bold);
+	font-size: inherit;
+	font-family: inherit;
 }
 
 .price {
 	text-align: right;
 	font-size: var(--font-size-m);
+	font-weight: inherit;
+	font-family: inherit;
 }
