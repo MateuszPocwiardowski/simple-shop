@@ -3,6 +3,8 @@
 	max-width: 500px;
 	background-color: var(--color-gray-300);
 	padding: 1rem;
+	/* TODO: Remove it */
+	margin-bottom: 4rem;
 }
 
 .title {

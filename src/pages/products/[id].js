@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
 import styles from '@Styles/Product.module.css'
 
-const Product = ({ brand, title, description, price, quantity, category, code }) => {
+const Product = ({ brand, title, description, price, quantity, category, code, images }) => {
 	const formatter = new Intl.NumberFormat('pl-PL', {
 		style: 'currency',
 		currency: 'PLN',
@@ -24,7 +24,7 @@ const Product = ({ brand, title, description, price, quantity, category, code })
 					<p className={styles.brand}>{brand}</p>
 				</div>
 				<div className={styles.carousel}>
-					<img src='' alt='Product image' />
+					<img src={images[0]} alt='Product image' />
 				</div>
 				<div className={styles.manage}>
 					<p className={styles.code}>Product code: {code}</p>

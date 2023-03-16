@@ -15,10 +15,10 @@
 }
 
 .details {
-    display: flex;
+	display: flex;
 	flex-direction: column;
-    align-items: center;
-    width: 100%;
+	align-items: center;
+	width: 100%;
 	row-gap: 2rem;
 }
 
@@ -27,19 +27,21 @@
 }
 
 .carousel {
-	height: 10rem;
 	width: 100%;
+	max-width: 600px;
+	display: flex;
+	flex-direction: column;
 }
 
 .image {
-	height: 100%;
+	height: auto;
 	width: 100%;
 	object-fit: cover;
 }
 
 .manage {
 	width: 100%;
-    max-width: 600px;
+	max-width: 600px;
 	display: flex;
 	flex-direction: column;
 	row-gap: 1rem;
