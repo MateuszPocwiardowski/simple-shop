@@ -30,7 +30,7 @@ const Product = ({ products, brand, title, description, price, quantity, categor
 
 	useEffect(() => {
 		setQuoteOrder(price * quantityOrder)
-	}, [quantityOrder])
+	}, [quantityOrder, price])
 
 	return (
 		<div className={styles.product}>
