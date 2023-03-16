@@ -17,14 +17,9 @@ const Products = ({ products }) => {
 				Our furniture pieces are crafted with the finest materials and designed to elevate any space with their elegance
 				and functionality. Shop with us today and discover the perfect addition to your luxurious lifestyle.
 			</p>
-			<div className={styles.container}>
+			<div className={styles.items}>
 				{products.map(({ id, title, price, images }) => (
-					<div
-						key={title}
-						className={styles.button}
-						onClick={() => {
-							router.push(`/products/${id}`)
-						}}>
+					<div className={styles.item}>
 						<Product title={title} price={price} images={images} />
 					</div>
 				))}
