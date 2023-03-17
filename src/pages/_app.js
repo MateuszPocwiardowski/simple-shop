@@ -1,11 +1,14 @@
 import Layout from '@Components/Layout/Layout'
+import { ShopContextProvider } from '@Store/shop-context'
 
 import '@Styles/Globals.css'
 
 export default function App({ Component, pageProps }) {
 	return (
-		<Layout>
-			<Component {...pageProps} />
-		</Layout>
+		<ShopContextProvider>
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
+		</ShopContextProvider>
 	)
 }

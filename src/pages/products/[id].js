@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import ShopContext from '@Store/shop-context'
 import Link from 'next/link'
 import { MongoClient, ObjectId } from 'mongodb'
 import { Pagination } from 'swiper'
@@ -11,26 +12,34 @@ import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import styles from '@Styles/Product.module.css'
 
-const Product = ({ products, brand, title, description, price, quantity, category, code, images }) => {
-	const [quantityOrder, setQuantityOrder] = useState(1)
-	const [quoteOrder, setQuoteOrder] = useState(price)
+const Product = ({ title, description, price, brand, quantity, category, code, images }) => {
+	const shopCtx = useContext(ShopContext)
+
+	const [orderQuantity, setOrderQuantity] = useState(1)
+	const [orderQuote, setOrderQuote] = useState(price)
 
 	const formatter = new Intl.NumberFormat('pl-PL', {
 		style: 'currency',
 		currency: 'PLN',
 	})
 
-	const increaseQuantityOrderHandler = () => {
-		setQuantityOrder(prevState => prevState + 1)
+	const formattedQuote = formatter.format(Number(orderQuote))
+
+	const increaseOrderQuantityHandler = () => {
+		setOrderQuantity(prevState => prevState + 1)
 	}
 
-	const decreaseQuantityOrderHandler = () => {
-		setQuantityOrder(prevState => (prevState > 1 ? prevState - 1 : prevState))
+	const decreaseOrderQuantityHandler = () => {
+		setOrderQuantity(prevState => (prevState > 1 ? prevState - 1 : prevState))
+	}
+
+	const addToBasketHandler = () => {
+		shopCtx.addProduct(title, orderQuantity, orderQuote)
 	}
 
 	useEffect(() => {
-		setQuoteOrder(price * quantityOrder)
-	}, [quantityOrder, price])
+		setOrderQuote(price * orderQuantity)
+	}, [orderQuantity, price])
 
 	return (
 		<div className={styles.product}>
@@ -66,15 +75,17 @@ const Product = ({ products, brand, title, description, price, quantity, categor
 					<p>{description}</p>
 
 					<div className={styles.quantity}>
-						<button onClick={increaseQuantityOrderHandler}>+</button>
-						<p>{quantityOrder}</p>
-						<button onClick={decreaseQuantityOrderHandler}>-</button>
+						<button onClick={increaseOrderQuantityHandler}>+</button>
+						<p>{orderQuantity}</p>
+						<button onClick={decreaseOrderQuantityHandler}>-</button>
 					</div>
 
-					<p className={styles.price}>{formatter.format(Number(quoteOrder))}</p>
+					<p className={styles.price}>{formattedQuote}</p>
 
 					<div className={styles.buttons}>
-						<button className={styles.button}>Add to basket</button>
+						<button className={styles.button} onClick={addToBasketHandler}>
+							Add to basket
+						</button>
 						<button className={styles.button}>Shop now</button>
 					</div>
 				</div>

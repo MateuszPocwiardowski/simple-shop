@@ -28,6 +28,7 @@
 
 .container {
 	max-width: 100%;
+	z-index: 0;
 }
 
 @media (min-width: 632px) {

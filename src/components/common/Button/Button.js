@@ -20,7 +20,7 @@ const Button = ({ type, children, isOpened, onClick, sx, ...props }) => {
 
 		case 'icon': {
 			return (
-				<button className={styles.icon} onClick={onClick} {...props}>
+				<button className={styles.icon} onClick={onClick} style={sx} {...props}>
 					{children}
 				</button>
 			)
