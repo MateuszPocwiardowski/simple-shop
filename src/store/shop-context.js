@@ -1,4 +1,7 @@
-import { useState, createContext } from 'react'
+import { useState, useEffect, createContext } from 'react'
+
+import setInStorage from '@Utils/setInStorage'
+import getFromStorage from '@Utils/getFromStorage'
 
 const ShopContext = createContext({
 	products: [],
@@ -8,7 +11,13 @@ const ShopContext = createContext({
 })
 
 export const ShopContextProvider = ({ children }) => {
-	const [products, setProducts] = useState([])
+	let initialBasket
+
+	if (typeof window !== 'undefined') {
+		initialBasket = getFromStorage('basket')
+	}
+
+	const [products, setProducts] = useState(initialBasket ?? [])
 	const [totalQuantity, setTotalQuantity] = useState(0)
 	const [totalQuote, setTotalQuote] = useState(0)
 
@@ -24,10 +33,23 @@ export const ShopContextProvider = ({ children }) => {
 		} else {
 			setProducts(prevState => [...prevState, { title, quantity, quote }])
 		}
-
-		setTotalQuantity(prevState => prevState + quantity)
-		setTotalQuote(prevState => prevState + quote)
 	}
+
+	useEffect(() => {
+		setInStorage('basket', products)
+
+		setTotalQuantity(
+			products.reduce((total, product) => {
+				return total + product.quantity
+			}, 0)
+		)
+
+		setTotalQuote(
+			products.reduce((total, product) => {
+				return total + product.quote
+			}, 0)
+		)
+	}, [products])
 
 	const contextValue = {
 		products,
