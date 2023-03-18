@@ -3,6 +3,7 @@ import ShopContext from '@Store/shop-context'
 import Link from 'next/link'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
+import toCurrency from '@Utils/toCurrency'
 import Button from '@Components/common/Button/Button'
 import ModalWindow from '@Components/Basket/Basket'
 
@@ -74,7 +75,7 @@ const Navigation = () => {
 												<span>{product.quantity}</span>
 											</td>
 											<td>
-												<span>{product.quote}</span>
+												<span>{toCurrency(product.quote)}</span>
 											</td>
 										</tr>
 									)
@@ -93,7 +94,7 @@ const Navigation = () => {
 									<td></td>
 									<td></td>
 									<td>
-										<span>{shopCtx.totalQuote}</span>
+										<span>{toCurrency(shopCtx.totalQuote)}</span>
 									</td>
 								</tr>
 							</tbody>

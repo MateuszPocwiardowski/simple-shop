@@ -4,8 +4,9 @@ import Link from 'next/link'
 import { MongoClient, ObjectId } from 'mongodb'
 import { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+
+import toCurrency from '@Utils/toCurrency'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -17,13 +18,6 @@ const Product = ({ title, description, price, brand, quantity, category, code, i
 
 	const [orderQuantity, setOrderQuantity] = useState(1)
 	const [orderQuote, setOrderQuote] = useState(price)
-
-	const formatter = new Intl.NumberFormat('pl-PL', {
-		style: 'currency',
-		currency: 'PLN',
-	})
-
-	const formattedQuote = formatter.format(Number(orderQuote))
 
 	const increaseOrderQuantityHandler = () => {
 		setOrderQuantity(prevState => prevState + 1)
@@ -80,7 +74,7 @@ const Product = ({ title, description, price, brand, quantity, category, code, i
 						<button onClick={decreaseOrderQuantityHandler}>-</button>
 					</div>
 
-					<p className={styles.price}>{formattedQuote}</p>
+					<p className={styles.price}>{toCurrency(orderQuote)}</p>
 
 					<div className={styles.buttons}>
 						<button className={styles.button} onClick={addToBasketHandler}>

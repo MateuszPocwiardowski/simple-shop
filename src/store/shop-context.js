@@ -13,7 +13,18 @@ export const ShopContextProvider = ({ children }) => {
 	const [totalQuote, setTotalQuote] = useState(0)
 
 	const addProductHandler = (title, quantity, quote) => {
-		setProducts(prevState => [...prevState, { title, quantity, quote }])
+		const existingProductIndex = products.findIndex(product => product.title === title)
+
+		if (existingProductIndex !== -1) {
+			const updatedProducts = [...products]
+			updatedProducts[existingProductIndex].quantity += quantity
+			updatedProducts[existingProductIndex].quote += quote
+
+			setProducts(updatedProducts)
+		} else {
+			setProducts(prevState => [...prevState, { title, quantity, quote }])
+		}
+
 		setTotalQuantity(prevState => prevState + quantity)
 		setTotalQuote(prevState => prevState + quote)
 	}
