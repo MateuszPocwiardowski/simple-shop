@@ -22,7 +22,7 @@
 	}
 }
 
-.items {
+.links {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
@@ -30,36 +30,23 @@
 	column-gap: 2rem;
 }
 
-.item {
+.link {
 	list-style-type: none;
 	font-size: var(--font-size-m);
 	font-weight: var(--font-weight-medium);
 }
 
 @media (min-width: 996px) {
-	.item {
+	.link {
 		font-size: var(--font-size-l);
 	}
-}
-
-.item button {
-	color: var(--color-gray-700);
-}
-
-.logo a,
-.item a,
-.item button {
-	text-decoration: none;
-	color: inherit;
-	font-size: inherit;
 }
 
 .quantity {
 	width: 1.2rem;
 	height: 1.2rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	line-height: 1.2rem;
+	text-align: center;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -68,35 +55,4 @@
 	background-color: var(--color-red);
 	font-size: var(--font-size-xs);
 	transform: translate(50%, -50%);
-}
-
-.emptyBasket {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-}
-
-.title {
-	color: var(--color-gray-700);
-	font-size: var(--font-size-m);
-	margin-bottom: 1rem;
-}
-
-.basketSummary {
-	text-align: left;
-	width: 100%;
-	max-width: 600px;
-}
-
-.basketSummary thead span {
-	font-weight: var(--font-weight-bold);
-}
-
-.basketSummary span {
-	margin-right: 1rem;
-}
-
-.totalQuote span {
-	font-weight: var(--font-weight-bold);
 }

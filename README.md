@@ -21,14 +21,17 @@ https://so-simple-shop.vercel.app/
 
 - Next.js 13
 - Material UI
+- MongoDB
 - CSS
+- Swiper
 
 ## Screenshots
 
 ![Screenshot of ladning page](/public/landing.png?raw=true)
 
 ## TODO
-- Add carousel with images
+- Add more dummy products to database
 - Add products related to category
-- Add more sections on main page
-- Improve styling
+- Add firebase authentication
+- Add admin panel
+- Refactor code

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import ShopContext from '@Store/shop-context'
+import CartContext from '@Store/cart-context'
 import Link from 'next/link'
 import { MongoClient, ObjectId } from 'mongodb'
 import { Pagination } from 'swiper'
@@ -13,8 +13,8 @@ import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import styles from '@Styles/Product.module.css'
 
-const Product = ({ title, description, price, brand, quantity, category, code, images }) => {
-	const shopCtx = useContext(ShopContext)
+const Product = ({ id, title, description, price, brand, quantity, category, code, images }) => {
+	const cartCtx = useContext(CartContext)
 
 	const [orderQuantity, setOrderQuantity] = useState(1)
 	const [orderQuote, setOrderQuote] = useState(price)
@@ -28,7 +28,7 @@ const Product = ({ title, description, price, brand, quantity, category, code, i
 	}
 
 	const addToBasketHandler = () => {
-		shopCtx.addProduct(title, orderQuantity, orderQuote)
+		cartCtx.addItemToCart({ id, title, quantity: orderQuantity, price: orderQuote })
 	}
 
 	useEffect(() => {
@@ -80,7 +80,9 @@ const Product = ({ title, description, price, brand, quantity, category, code, i
 						<button className={styles.button} onClick={addToBasketHandler}>
 							Add to basket
 						</button>
-						<button className={styles.button}>Shop now</button>
+						<button className={styles.button} onClick={addToBasketHandler}>
+							Shop now
+						</button>
 					</div>
 				</div>
 			</div>

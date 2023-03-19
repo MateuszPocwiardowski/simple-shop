@@ -1,14 +1,14 @@
 import Layout from '@Components/Layout/Layout'
-import { ShopContextProvider } from '@Store/shop-context'
+import { CartContextProvider } from '@Store/cart-context'
 
 import '@Styles/Globals.css'
 
 export default function App({ Component, pageProps }) {
 	return (
-		<ShopContextProvider>
+		<CartContextProvider>
 			<Layout>
 				<Component {...pageProps} />
 			</Layout>
-		</ShopContextProvider>
+		</CartContextProvider>
 	)
 }

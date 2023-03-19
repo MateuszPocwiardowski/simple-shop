@@ -1,107 +1,48 @@
-import { useState, useContext, Fragment } from 'react'
-import ShopContext from '@Store/shop-context'
+import { useState, useEffect, useContext } from 'react'
+import CartContext from '@Store/cart-context'
 import Link from 'next/link'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
-import toCurrency from '@Utils/toCurrency'
+import CartModal from '@Components/CartModal/CartModal'
 import Button from '@Components/common/Button/Button'
-import ModalWindow from '@Components/Basket/Basket'
 
 import styles from './Navigation.module.css'
 
 const Navigation = () => {
-	const shopCtx = useContext(ShopContext)
+	const cartCtx = useContext(CartContext)
 
-	const [modalIsOpen, setModalIsOpen] = useState(false)
+	const [isCartModalShown, setIsCartModalShown] = useState(false)
 
-	const showBasketHandler = () => {
-		setModalIsOpen(true)
+	useEffect(() => {
+		setIsCartModalShown(true)
+	}, [cartCtx.cart])
+
+	const showCartModalHandler = () => {
+		setIsCartModalShown(true)
 	}
 
-	const closeBasketHandler = () => {
-		setModalIsOpen(false)
+	const hideCartModalHandler = () => {
+		setIsCartModalShown(false)
 	}
 
 	return (
 		<nav className={styles.nav}>
 			<h1 className={styles.logo}>
-				<Link href='/'>shop.me</Link>
+				<Link href='/'>so.simple.shop</Link>
 			</h1>
-			<ul className={styles.items}>
-				<li className={styles.item}>
+
+			<ul className={styles.links}>
+				<li className={styles.link}>
 					<Link href='/'>Home</Link>
 				</li>
 
-				<Button type='icon' sx={{ position: 'relative' }} onClick={showBasketHandler}>
+				<Button type='icon' sx={{ position: 'relative' }} onClick={showCartModalHandler}>
 					<ShoppingCartOutlinedIcon />
-					{!!shopCtx.totalQuantity && <p className={styles.quantity}>{shopCtx.totalQuantity}</p>}
+					{cartCtx.quantity > 0 && <p className={styles.quantity}>{cartCtx.quantity}</p>}
 				</Button>
 			</ul>
 
-			<ModalWindow modalIsOpen={modalIsOpen} closeModalHandler={closeBasketHandler}>
-				<h4 className={styles.title}>Your basket</h4>
-
-				{shopCtx.products.length === 0 && (
-					<div className={styles.emptyBasket}>
-						<p>You do not have any products in your basket.</p>
-						<p>Let&apos;s buy something!</p>
-					</div>
-				)}
-
-				{shopCtx.products.length > 0 && (
-					<Fragment>
-						<table className={styles.basketSummary}>
-							<thead>
-								<tr>
-									<td>
-										<span>Title</span>
-									</td>
-									<td>
-										<span>Quantity</span>
-									</td>
-									<td>
-										<span>Quote</span>
-									</td>
-								</tr>
-							</thead>
-							<tbody>
-								{shopCtx.products.map(product => {
-									return (
-										<tr key={product.title}>
-											<td>
-												<span>{product.title}</span>
-											</td>
-											<td>
-												<span>{product.quantity}</span>
-											</td>
-											<td>
-												<span>{toCurrency(product.quote)}</span>
-											</td>
-										</tr>
-									)
-								})}
-								<tr>
-									<td colSpan={3}>&nbsp;</td>
-								</tr>
-								<tr className={styles.totalQuote}>
-									<td></td>
-									<td></td>
-									<td>
-										<span>Total</span>
-									</td>
-								</tr>
-								<tr className={styles.totalQuoteAmount}>
-									<td></td>
-									<td></td>
-									<td>
-										<span>{toCurrency(shopCtx.totalQuote)}</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</Fragment>
-				)}
-			</ModalWindow>
+			<CartModal isCartModalShown={isCartModalShown} hideCartModalHandler={hideCartModalHandler} />
 		</nav>
 	)
 }
