@@ -6,6 +6,7 @@ import { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
+import Stock from '@Components/Stock/Stock'
 import toCurrency from '@Utils/toCurrency'
 
 import 'swiper/css'
@@ -65,7 +66,11 @@ const Product = ({ id, title, description, price, brand, quantity, category, cod
 				</div>
 
 				<div className={styles.manage}>
-					<p className={styles.code}>Product code: {code}</p>
+					<div className={styles.stock}>
+						<p className={styles.code}>Product code: {code}</p>
+						<Stock stock={quantity} />
+					</div>
+
 					<p>{description}</p>
 
 					<div className={styles.quantity}>
@@ -77,10 +82,10 @@ const Product = ({ id, title, description, price, brand, quantity, category, cod
 					<p className={styles.price}>{toCurrency(orderQuote)}</p>
 
 					<div className={styles.buttons}>
-						<button className={styles.button} onClick={addToBasketHandler}>
+						<button className={styles.button} onClick={addToBasketHandler} disabled={quantity === 0}>
 							Add to basket
 						</button>
-						<button className={styles.button} onClick={addToBasketHandler}>
+						<button className={styles.button} onClick={addToBasketHandler} disabled={quantity === 0}>
 							Shop now
 						</button>
 					</div>

@@ -14,7 +14,7 @@ const Navigation = () => {
 	const [isCartModalShown, setIsCartModalShown] = useState(false)
 
 	useEffect(() => {
-		setIsCartModalShown(true)
+		if (cartCtx.cart.length > 0) setIsCartModalShown(true)
 	}, [cartCtx.cart])
 
 	const showCartModalHandler = () => {

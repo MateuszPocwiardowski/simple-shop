@@ -58,6 +58,11 @@
 	padding: 1rem;
 }
 
+.stock {
+	display: flex;
+	justify-content: space-between;
+}
+
 .code {
 	text-align: left;
 }

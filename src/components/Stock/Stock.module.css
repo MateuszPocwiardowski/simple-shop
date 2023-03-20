@@ -1,0 +1,9 @@
+.stock {
+	width: 60px;
+	height: 20px;
+	background-color: var(--color-gray-200);
+}
+
+.outOfStock {
+	color: var(--color-red);
+}
