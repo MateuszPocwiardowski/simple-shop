@@ -21,9 +21,9 @@ const Button = ({ type, children, isOpened, onClick, sx, ...props }) => {
 
 		case 'text':
 			return (
-				<MaterialUiButton className={styles.text} variant={type} sx={{ ...sx }} onClick={onClick} {...props}>
+				<button className={styles.text} style={sx} onClick={onClick} {...props}>
 					{children}
-				</MaterialUiButton>
+				</button>
 			)
 
 		case 'icon': {
