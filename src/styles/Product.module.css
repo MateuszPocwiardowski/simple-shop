@@ -84,14 +84,14 @@
 }
 
 .quantity button {
-	border: 2px solid  var(--color-gray-600);
+	border: 2px solid var(--color-gray-600);
 	font-weight: var(--font-weight-medium);
 	cursor: pointer;
 }
 
 .quantity p {
-	border-top: 2px solid  var(--color-gray-600);
-	border-bottom: 2px solid  var(--color-gray-600);
+	border-top: 2px solid var(--color-gray-600);
+	border-bottom: 2px solid var(--color-gray-600);
 }
 
 .price {
@@ -121,9 +121,18 @@
 	color: var(--color-gray-600);
 }
 
+.otherProducts {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
 .otherProducts h5 {
+	text-align: left;
 	font-size: var(--font-size-s);
 	font-weight: var(--font-weight-normal);
+	margin-bottom: 1rem;
 }
 
 @media (min-width: 992px) {

@@ -5,16 +5,28 @@ import { MongoClient, ObjectId } from 'mongodb'
 import { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import ProductSlide from '@Components/Products/Product/Product'
 
 import Stock from '@Components/Stock/Stock'
 import toCurrency from '@Utils/toCurrency'
 
+import styles from '@Styles/Product.module.css'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
-import styles from '@Styles/Product.module.css'
 
-const Product = ({ id, title, description, price, brand, quantity, category, code, images }) => {
+const Product = ({
+	id,
+	title,
+	description,
+	price,
+	brand,
+	quantity,
+	category,
+	code,
+	images,
+	otherProductFromCategory,
+}) => {
 	const cartCtx = useContext(CartContext)
 
 	const [orderQuantity, setOrderQuantity] = useState(1)
@@ -94,14 +106,25 @@ const Product = ({ id, title, description, price, brand, quantity, category, cod
 
 			<div className={styles.otherProducts}>
 				<h5>Other products from {category.toLowerCase()}</h5>
-				<div>
+				<div className={styles.otherProductsCarousel}>
 					<Swiper
 						className={styles.swiper}
-						spaceBetween={0}
-						slidesPerView={3}
-						pagination={{ clickable: true }}
-						scrollbar={{ clickable: true }}>
-						<SwiperSlide></SwiperSlide>
+						slidesPerView={1.5}
+						spaceBetween={20}
+						breakpoints={{
+							576: {
+								slidesPerView: 2.5,
+							},
+							768: {
+								slidesPerView: 3.5,
+							},
+						}}
+						pagination={{ clickable: true }}>
+						{otherProductFromCategory.map(({ id, title, price, images }) => (
+							<SwiperSlide key={title}>
+								<ProductSlide id={id} title={title} price={price} images={images} />
+							</SwiperSlide>
+						))}
 					</Swiper>
 				</div>
 			</div>
@@ -135,26 +158,37 @@ export const getStaticProps = async context => {
 		'mongodb+srv://mpocwiardowski:tnmLqEI56WyjzMJU@cluster0.vlusofg.mongodb.net/cars?retryWrites=true&w=majority'
 	)
 
+	const selectedItemId = context.params.id
+
 	const db = client.db()
 	const productsCollection = db.collection('products')
-	const products = await productsCollection.find().toArray()
 
-	const selectedId = context.params.id
-	const selectedProduct = await productsCollection.findOne({ _id: new ObjectId(selectedId) })
+	const { _id, title, description, price, brand, quantity, category, code, images } = await productsCollection.findOne({
+		_id: new ObjectId(selectedItemId),
+	})
+
+	const otherProductFromCategory = await productsCollection.find({ category: category }).toArray()
 
 	client.close()
 
 	return {
 		props: {
-			products: products.map(product => ({
-				...product,
-				_id: null,
-				id: product._id.toString(),
-			})),
+			id: _id.toString(),
+			title,
+			description,
+			price,
+			brand,
+			quantity,
+			category,
+			code,
+			images,
 
-			...selectedProduct,
-			_id: null,
-			id: selectedProduct?._id.toString(),
+			otherProductFromCategory: otherProductFromCategory.map(item => ({
+				id: item._id.toString(),
+				title: item.title,
+				price: item.price,
+				images: item.images,
+			})),
 		},
 	}
 }

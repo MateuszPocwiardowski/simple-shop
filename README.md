@@ -30,7 +30,7 @@ https://so-simple-shop.vercel.app/
 ![Screenshot of ladning page](/public/landing.png?raw=true)
 
 ## TODO
-- Add more dummy products to database
+- Add pagination to gallery on main page
 - Add products related to category
 - Add firebase authentication
 - Add admin panel

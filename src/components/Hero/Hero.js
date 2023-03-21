@@ -1,5 +1,6 @@
 import styles from './Hero.module.css'
 
+// TODO: Connect with headless
 const HERO_DATA = [
 	{
 		src: 'https://lh3.googleusercontent.com/p3RstY0klewDCFQPdhJfP_G67nqWaFcfF47jzjwzeMIIqU7Pnt-owUd1GheBd5UnKFRO0XpSV1RlQ_-6uahCvTXAeV3SsbryrQPrwc8LW7kDJqRTvAOjCvd7vANLf_cYy2RSS9SWjWZgw-ng6iNZCn2wtwAM58a5xszmC6MwzI916kGEpB5S7NAM-0ya9aL6',
