@@ -1,4 +1,4 @@
-.products {
+.items {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -6,8 +6,7 @@
 	text-align: left;
 }
 
-.title,
-.subtitle {
+.title {
 	font-size: var(--font-size-m);
 }
 
@@ -17,11 +16,15 @@
 	}
 }
 
+.description {
+	margin-bottom: 1rem;
+}
+
 .cards {
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
-	gap: 4rem;
+	gap: 4rem 2rem;
 }
 
 @media (min-width: 576px) {

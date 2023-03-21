@@ -1,0 +1,15 @@
+.banner {
+	width: 100%;
+	max-width: 500px;
+	background-color: var(--color-gray-300);
+	padding: 1rem;
+}
+
+.title {
+	font-size: var(--font-size-m);
+	margin-bottom: 0.5rem;
+}
+
+.text {
+	margin-bottom: 1rem;
+}

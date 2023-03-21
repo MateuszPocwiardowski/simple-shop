@@ -12,7 +12,7 @@
 	flex: 0 0 60%;
 	justify-content: center;
 	align-items: center;
-	color: var(--color-gray-700);
+	color: var(--color-gray-800);
 	column-gap: 5px;
 }
 
@@ -24,12 +24,7 @@
 	column-gap: 5px;
 }
 
-.links a {
-	text-decoration: none;
-	color: inherit;
-}
-
 .links svg {
 	font-size: 26px;
-	color: var(--color-gray-700);
+	color: var(--color-gray-800);
 }

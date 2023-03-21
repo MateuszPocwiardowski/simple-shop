@@ -2,13 +2,13 @@ import { useRouter } from 'next/router'
 
 import toCurrency from '@Utils/toCurrency'
 
-import styles from './Product.module.css'
+import styles from './Item.module.css'
 
-const Product = ({ id, title, price, images }) => {
+const Item = ({ id, title, price, images }) => {
 	const router = useRouter()
 
 	const showDetailsHandler = () => {
-		router.push('/products/' + id)
+		router.push('/items/' + id)
 	}
 
 	return (
@@ -20,4 +20,4 @@ const Product = ({ id, title, price, images }) => {
 	)
 }
 
-export default Product
+export default Item

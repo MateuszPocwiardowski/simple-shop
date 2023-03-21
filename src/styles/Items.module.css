@@ -1,9 +1,10 @@
-.product {
+.items {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	row-gap: 2rem;
+	justify-content: center;
+	row-gap: 4rem;
 }
 
 .link {
@@ -14,25 +15,22 @@
 	color: inherit;
 }
 
-.details {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	row-gap: 2rem;
+.titleContainer {
+	margin: 0 auto;
 }
 
-.title h5 {
+.title {
 	font-size: var(--font-size-l);
 }
 
-.container {
+.swiperContainer {
 	max-width: 100%;
+	margin: 0 auto;
 	z-index: 0;
 }
 
 @media (min-width: 632px) {
-	.container {
+	.swiperContainer {
 		max-width: 600px;
 	}
 }
@@ -48,34 +46,35 @@
 	object-fit: cover;
 }
 
-.manage {
+.detailsContainer {
 	width: 100%;
 	max-width: 600px;
 	display: flex;
 	flex-direction: column;
 	row-gap: 1rem;
 	background-color: var(--color-gray-300);
+	margin: -2rem auto 0 auto;
 	padding: 1rem;
 }
 
-.stock {
+.details {
 	display: flex;
 	justify-content: space-between;
 }
 
-.code {
+.productCode {
 	text-align: left;
 }
 
-.quantity {
+.manageQuantity {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 }
 
-.quantity button,
-.quantity p {
+.manageQuantity button,
+.manageQuantity p {
 	font-size: var(--font-size-l);
 	font-family: inherit;
 	background: none;
@@ -83,13 +82,13 @@
 	color: var(--color-gray-600);
 }
 
-.quantity button {
+.manageQuantity button {
 	border: 2px solid var(--color-gray-600);
 	font-weight: var(--font-weight-medium);
 	cursor: pointer;
 }
 
-.quantity p {
+.manageQuantity p {
 	border-top: 2px solid var(--color-gray-600);
 	border-bottom: 2px solid var(--color-gray-600);
 }
@@ -115,28 +114,24 @@
 	cursor: pointer;
 }
 
-.button:first-child {
-	background: none;
-	border: 2px solid var(--color-gray-600);
-	color: var(--color-gray-600);
-}
-
-.otherProducts {
+.recommendedItems {
 	width: 100%;
-	max-width: 1200px;
+	max-width: 1400px;
 	margin: 0 auto;
 	overflow: hidden;
+	z-index: 0;
 }
 
-.otherProducts h5 {
+.recommendedItems .title {
 	text-align: left;
-	font-size: var(--font-size-s);
-	font-weight: var(--font-weight-normal);
-	margin-bottom: 1rem;
+	font-size: var(--font-size-m);
+	font-weight: var(--font-weight-medium);
+	margin-bottom: 2rem;
 }
 
-@media (min-width: 992px) {
-	.otherProducts h5 {
-		font-size: var(--font-size-m);
-	}
+.recommendedItems .swiperContainer {
+	width: 100%;
+	max-width: var(--max-width);
+	margin: 0 auto;
+	overflow: hidden;
 }

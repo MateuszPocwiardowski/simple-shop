@@ -6,14 +6,27 @@ const Button = ({ type, children, isOpened, onClick, sx, ...props }) => {
 	switch (type) {
 		case 'contained':
 			return (
-				<MaterialUiButton className={styles.contained} variant={type} sx={sx} onClick={onClick} {...props}>
+				<MaterialUiButton className={styles.contained} variant={type} sx={{ ...sx }} onClick={onClick} {...props}>
 					{children}
 				</MaterialUiButton>
 			)
 
+		case 'contained-inverted': {
+			return (
+				<MaterialUiButton
+					className={styles.containedInverted}
+					variant={type}
+					sx={{ ...sx }}
+					onClick={onClick}
+					{...props}>
+					{children}
+				</MaterialUiButton>
+			)
+		}
+
 		case 'text':
 			return (
-				<MaterialUiButton className={styles.text} variant={type} sx={sx} onClick={onClick} {...props}>
+				<MaterialUiButton className={styles.text} variant={type} sx={{ ...sx }} onClick={onClick} {...props}>
 					{children}
 				</MaterialUiButton>
 			)

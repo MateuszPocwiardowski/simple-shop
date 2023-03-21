@@ -1,29 +1,69 @@
-.contained {
-	padding: 0.5rem 1rem;
-	border-radius: 2rem;
+.contained,
+.text,
+.icon {
 	text-transform: none;
-	font-size: inherit;
 	font-weight: inherit;
+	border: none;
+	cursor: pointer;
+}
+
+.contained,
+.containedInverted {
+	padding: 0.5rem 1rem;
+	background-color: var(--color-gray-800);
+	font-size: var(--font-size-s);
+	color: var(--color-gray-100);
 	font-family: inherit;
+	border-radius: 0;
+}
+
+.contained:hover {
+	background-color: var(--color-gray-600);
+}
+
+.containedInverted {
+	text-transform: none;
+	color: var(--color-gray-800);
+	border: 2px solid var(--color-gray-800);
+	background: none;
+}
+
+.containedInverted:hover {
+	background-color: var(--color-gray-200);
 }
 
 .text {
-	padding: 0.75rem;
-	text-transform: none;
-	font-size: inherit;
-	font-weight: inherit;
+	position: relative;
+	padding: 0.5rem 1rem;
+	background: none;
+	color: var(--color-gray-800);
+	font-weight: var(--font-weight-medium);
+	font-size: var(--font-size-s);
 	font-family: inherit;
+}
+
+.text::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 0.25rem;
+	border-bottom: 1px solid var(--color-gray-800);
+	transform: translateY(-50%) scaleX(0);
+	transform-origin: 0;
+	transition: transform 0.3s;
 }
 
 .text:hover {
 	background: none;
 }
 
+.text:hover::after {
+	transform: translateY(-50%) scaleX(100%);
+}
+
 .icon {
-	font-weight: inherit;
-	color: inherit;
 	font-size: inherit;
-	border: none;
+	color: inherit;
 	background: none;
-	cursor: pointer;
 }

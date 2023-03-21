@@ -7,8 +7,8 @@ const CartContext = createContext({
 	cart: [],
 	quantity: 0,
 	price: 0,
-	addProduct: () => {},
-	removeProduct: () => {},
+	addItemToCart: () => {},
+	removeItemFromCart: () => {},
 })
 
 export const CartContextProvider = ({ children }) => {
