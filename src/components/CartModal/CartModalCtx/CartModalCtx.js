@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import CartContext from '@Store/cart-context'
-import RemoveIcon from '@mui/icons-material/Remove'
+import DeleteIcon from '@mui/icons-material/Delete'
 
 import Button from '@Components/common/Button/Button'
 import toCurrency from '@Utils/toCurrency'
 
 import styles from './CartModalCtx.module.css'
 
-const CartModalCtx = () => {
+const CartModalCtx = ({ proceedCheckoutHandler }) => {
 	const cartCtx = useContext(CartContext)
 
 	return (
@@ -23,7 +23,7 @@ const CartModalCtx = () => {
 						onClick={() => {
 							cartCtx.removeItemFromCart({ id: item.id })
 						}}>
-						<RemoveIcon />
+						<DeleteIcon />
 					</Button>
 				</div>
 			))}
@@ -31,6 +31,10 @@ const CartModalCtx = () => {
 				<p>Total</p>
 				<p>{toCurrency(cartCtx.price)}</p>
 			</div>
+
+			<Button type='contained' sx={{ alignSelf: 'center', marginTop: '2rem' }} onClick={proceedCheckoutHandler}>
+				Proceed checkout
+			</Button>
 		</React.Fragment>
 	)
 }

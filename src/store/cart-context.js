@@ -9,6 +9,7 @@ const CartContext = createContext({
 	price: 0,
 	addItemToCart: () => {},
 	removeItemFromCart: () => {},
+	completeOrder: () => {},
 })
 
 export const CartContextProvider = ({ children }) => {
@@ -34,7 +35,7 @@ export const CartContextProvider = ({ children }) => {
 
 			const updatedCart = [...cart]
 			updatedCart.splice(cartItemIndex, 1, updatedCartItem)
-			
+
 			setCart(updatedCart)
 		} else {
 			setCart(prevState => [...prevState, { id, title, quantity, price }])
@@ -43,6 +44,10 @@ export const CartContextProvider = ({ children }) => {
 
 	const removeItemFromCartHandler = ({ id }) => {
 		setCart(cart.filter(item => item.id !== id))
+	}
+
+	const completeOrderHandler = () => {
+		setCart([])
 	}
 
 	useEffect(() => {
@@ -67,6 +72,7 @@ export const CartContextProvider = ({ children }) => {
 		price,
 		addItemToCart: addItemToCartHandler,
 		removeItemFromCart: removeItemFromCartHandler,
+		completeOrder: completeOrderHandler,
 	}
 
 	return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>

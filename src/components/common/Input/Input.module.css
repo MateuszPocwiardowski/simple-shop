@@ -1,0 +1,12 @@
+.input {
+	width: 100%;
+	max-width: 300px;
+}
+
+.inputBorder {
+	border-color: var(--color-gray-800) !important;
+}
+
+.inputLabel {
+	color: var(--color-gray-800) !important;
+}

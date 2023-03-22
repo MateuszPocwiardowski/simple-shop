@@ -31,5 +31,7 @@ https://so-simple-shop.vercel.app/
 
 ## TODO
 
-- Add firebase authentication
+- Finish order form
+- Add sumarry order
+- Add authentication
 - Add admin panel

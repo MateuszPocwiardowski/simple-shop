@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
 
 :root {
 	--color-black: #000;
 	--color-white: #fff;
 	--color-green: #539165;
-	--color-orange: #DC8449;
+	--color-orange: #dc8449;
 	--color-red: #921515;
 	--color-gray-100: #f7f7f7;
 	--color-gray-200: #e6e9ee;
@@ -20,7 +20,7 @@
 	--color-cream-600: #f4dcc1;
 	--color-cream-900: #d4b59d;
 
-	--font-main: 'Playfair Display', serif;
+	--font-main: 'Lora', serif;
 
 	--font-weight-regular: 400;
 	--font-weight-medium: 500;

@@ -1,8 +1,9 @@
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
 import ReactModal from 'react-modal'
 import CartContext from '@Store/cart-context'
 import CloseIcon from '@mui/icons-material/Close'
 
+import CartModalForm from './CartModalCtx/CartModalForm'
 import Button from '@Components/common/Button/Button'
 import CartModalCtx from './CartModalCtx/CartModalCtx'
 
@@ -13,6 +14,12 @@ ReactModal.setAppElement('#cartModal')
 const CartModal = ({ isCartModalShown, hideCartModalHandler }) => {
 	const cartCtx = useContext(CartContext)
 
+	const [isCheckout, setIsCheckout] = useState(false)
+
+	const proceedCheckoutHandler = () => {
+		setIsCheckout(prevState => !prevState)
+	}
+
 	return (
 		<ReactModal
 			style={{
@@ -20,7 +27,8 @@ const CartModal = ({ isCartModalShown, hideCartModalHandler }) => {
 				content: {
 					inset: '20px',
 					maxWidth: '600px',
-					margin: '0 auto',
+					height: 'min-content',
+					margin: 'auto',
 					display: 'flex',
 					flexDirection: 'column',
 					backgroundColor: '#fbfafa',
@@ -32,13 +40,19 @@ const CartModal = ({ isCartModalShown, hideCartModalHandler }) => {
 				<CloseIcon />
 			</Button>
 
-			<h4 className={styles.title}>Your cart</h4>
+			<h4 className={styles.title}>{isCheckout ? 'Compelete your order' : 'Your cart'}</h4>
 
-			{cartCtx.cart.length === 0 && (
+			{!isCheckout && cartCtx.cart.length === 0 && (
 				<p className={styles.emptyCartText}>You do not have any products in your basket.</p>
 			)}
 
-			{cartCtx.cart.length > 0 && <CartModalCtx />}
+			{!isCheckout && cartCtx.cart.length > 0 && (
+				<CartModalCtx proceedCheckoutHandler={proceedCheckoutHandler} hideCartModalHandler={hideCartModalHandler} />
+			)}
+
+			{isCheckout && (
+				<CartModalForm proceedCheckoutHandler={proceedCheckoutHandler} hideCartModalHandler={hideCartModalHandler} />
+			)}
 		</ReactModal>
 	)
 }
