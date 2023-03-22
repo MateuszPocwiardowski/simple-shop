@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import ReactModal from 'react-modal'
 import CartContext from '@Store/cart-context'
 import CloseIcon from '@mui/icons-material/Close'
@@ -19,6 +19,10 @@ const CartModal = ({ isCartModalShown, hideCartModalHandler }) => {
 	const proceedCheckoutHandler = () => {
 		setIsCheckout(prevState => !prevState)
 	}
+
+	useEffect(() => {
+		if (isCartModalShown) setIsCheckout(false)
+	}, [isCartModalShown])
 
 	return (
 		<ReactModal
