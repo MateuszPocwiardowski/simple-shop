@@ -32,7 +32,7 @@ const CartModalCtx = ({ proceedCheckoutHandler }) => {
 				<p>{toCurrency(cartCtx.price)}</p>
 			</div>
 
-			<Button type='contained' sx={{ alignSelf: 'center', marginTop: '2rem' }} onClick={proceedCheckoutHandler}>
+			<Button type='contained' sx={{ alignSelf: 'center', marginTop: '2rem' }}>
 				Proceed checkout
 			</Button>
 		</React.Fragment>

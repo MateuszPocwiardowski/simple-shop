@@ -4,6 +4,7 @@
 			"@Styles/*": ["./src/styles/*"],
 			"@Components/*": ["./src/components/*"],
 			"@Utils/*": ["./src/utils/*"],
+			"@Hooks/*": ["./src/hooks/*"],
 			"@Store/*": ["./src/store/*"]
 		}
 	}

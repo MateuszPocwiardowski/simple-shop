@@ -33,5 +33,6 @@ https://so-simple-shop.vercel.app/
 
 - Finish order form
 - Add sumarry order
+- Add logic for max quantity of items in cart
 - Add authentication
 - Add admin panel
