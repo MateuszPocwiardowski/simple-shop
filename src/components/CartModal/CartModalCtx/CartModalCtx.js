@@ -7,8 +7,17 @@ import toCurrency from '@Utils/toCurrency'
 
 import styles from './CartModalCtx.module.css'
 
-const CartModalCtx = ({ proceedCheckoutHandler }) => {
+const CartModalCtx = ({ hideCartModalHandler }) => {
 	const cartCtx = useContext(CartContext)
+
+	const proceedCheckoutHandler = event => {
+		event.preventDefault()
+
+		console.log('Ordered!')
+		cartCtx.completeOrder()
+
+		hideCartModalHandler()
+	}
 
 	return (
 		<React.Fragment>
@@ -32,7 +41,7 @@ const CartModalCtx = ({ proceedCheckoutHandler }) => {
 				<p>{toCurrency(cartCtx.price)}</p>
 			</div>
 
-			<Button type='contained' sx={{ alignSelf: 'center', marginTop: '2rem' }}>
+			<Button type='contained' sx={{ alignSelf: 'center', marginTop: '2rem' }} onClick={proceedCheckoutHandler}>
 				Proceed checkout
 			</Button>
 		</React.Fragment>
