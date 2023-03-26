@@ -12,7 +12,7 @@ const WishlistModalCtx = () => {
 
 	return (
 		<React.Fragment>
-			{wishlistCtx.wishlisty.map(item => (
+			{wishlistCtx.wishlist.map(item => (
 				<div className={styles.item} key={item.id}>
 					<p className={styles.title}>{item.title}</p>
 					<p className={styles.price}>{toCurrency(item.price)}</p>
