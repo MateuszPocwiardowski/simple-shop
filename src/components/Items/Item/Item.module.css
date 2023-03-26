@@ -24,8 +24,9 @@
 .wishlist,
 .wishlistAdded {
 	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	top: 0;
+	right: 0;
+	padding: 1rem;
 }
 
 .wishlistAdded {
