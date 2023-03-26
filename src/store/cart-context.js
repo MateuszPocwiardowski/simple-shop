@@ -16,7 +16,7 @@ export const CartContextProvider = ({ children }) => {
 	let storedCart
 
 	if (typeof window !== 'undefined') {
-		storedCart = getFromStorage('Cart')
+		storedCart = getFromStorage('cart')
 	}
 
 	const [cart, setCart] = useState(storedCart ?? [])
@@ -51,7 +51,7 @@ export const CartContextProvider = ({ children }) => {
 	}
 
 	useEffect(() => {
-		setInStorage('Cart', cart)
+		setInStorage('cart', cart)
 
 		setQuantity(
 			cart.reduce((total, item) => {

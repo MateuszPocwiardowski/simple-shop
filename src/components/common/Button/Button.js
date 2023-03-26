@@ -1,5 +1,3 @@
-import { Button as MaterialUiButton } from '@mui/material'
-
 import styles from './Button.module.css'
 
 const Button = ({ type, children, isOpened, onClick, sx, ...props }) => {
