@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 
 import useIsInView from '@Hooks/useInView'
 import Item from './Item/Item'
-import Button from '@Components/common/Button/Button'
 
 import styles from './Items.module.css'
 

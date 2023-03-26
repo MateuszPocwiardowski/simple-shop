@@ -34,11 +34,9 @@ const CartModal = ({ isCartModalShown, hideCartModalHandler }) => {
 				<CloseIcon />
 			</Button>
 
-			<h4 className={styles.title}>Compelete your order</h4>
+			<h4 className={styles.title}>Your cart</h4>
 
-			{cartCtx.cart.length === 0 && (
-				<p className={styles.emptyCartText}>You do not have any products in your basket.</p>
-			)}
+			{cartCtx.cart.length === 0 && <p className={styles.emptyCartText}>You do not have any products in your cart.</p>}
 
 			{cartCtx.cart.length > 0 && <CartModalCtx hideCartModalHandler={hideCartModalHandler} />}
 		</ReactModal>

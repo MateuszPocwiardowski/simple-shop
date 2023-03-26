@@ -1,0 +1,19 @@
+.item {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 3fr 1fr 1fr 1fr;
+	border-bottom: 1px solid var(--color-gray-800);
+	gap: 0.5rem;
+	align-items: center;
+	text-align: left;
+	padding: 0.5rem 0;
+}
+
+.title {
+	font-weight: var(--font-weight-medium);
+	grid-column: 1/1;
+}
+
+.price {
+	grid-column: 3/3;
+}

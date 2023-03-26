@@ -22,24 +22,12 @@
 	}
 }
 
-.links {
+.items {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
 	align-items: flex-end;
-	column-gap: 2rem;
-}
-
-.link {
-	list-style-type: none;
-	font-size: var(--font-size-m);
-	font-weight: var(--font-weight-bold);
-}
-
-@media (min-width: 996px) {
-	.link {
-		font-size: var(--font-size-l);
-	}
+	column-gap: 1rem;
 }
 
 .quantity {

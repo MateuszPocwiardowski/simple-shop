@@ -7,6 +7,7 @@ export default function Document() {
 			<body>
 				<Main />
 				<NextScript />
+				<div id='wishlistModal'></div>
 				<div id='cartModal'></div>
 			</body>
 		</Html>
