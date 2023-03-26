@@ -24,7 +24,7 @@ const Item = ({ id, title, price, images }) => {
 
 		wishlistCtx.wishlist.some(item => item.id === id)
 			? wishlistCtx.removeItemFromWishlist({ id })
-			: wishlistCtx.addItemToWishlist({ id, title, price })
+			: wishlistCtx.addItemToWishlist({ id, title, price, images })
 	}
 
 	useEffect(() => {

@@ -23,6 +23,7 @@ const WishlistModal = ({ isWishlistModalShown, hideWishlistModalHander }) => {
 					height: 'min-content',
 					margin: 'auto',
 					display: 'flex',
+					rowGap: '1rem',
 					flexDirection: 'column',
 					backgroundColor: '#fbfafa',
 				},
@@ -39,7 +40,7 @@ const WishlistModal = ({ isWishlistModalShown, hideWishlistModalHander }) => {
 				<p className={styles.emptyWishlistText}>You do not have any products on your wishlist.</p>
 			)}
 
-			{wishlistCtx.wishlist.length > 0 && <WishlistModalCtx />}
+			{wishlistCtx.wishlist.length > 0 && <WishlistModalCtx hideWishlistModalHander={hideWishlistModalHander} />}
 		</ReactModal>
 	)
 }

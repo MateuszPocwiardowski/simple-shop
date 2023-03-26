@@ -18,8 +18,8 @@ export const WishlistContextProvider = ({ children }) => {
 
 	const [wishlist, setWishlist] = useState(storedWishlist ?? [])
 
-	const addItemToWishlistHandler = ({ id, title, price }) => {
-		setWishlist(prevState => [...prevState, { id, title, price }])
+	const addItemToWishlistHandler = ({ id, title, price, images }) => {
+		setWishlist(prevState => [...prevState, { id, title, price, images }])
 	}
 
 	const removeItemFromWishlistHandler = ({ id }) => {

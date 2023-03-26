@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import CartContext from '@Store/cart-context'
-import DeleteIcon from '@mui/icons-material/Delete'
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 
 import Button from '@Components/common/Button/Button'
 import toCurrency from '@Utils/toCurrency'
@@ -32,7 +32,7 @@ const CartModalCtx = ({ hideCartModalHandler }) => {
 						onClick={() => {
 							cartCtx.removeItemFromCart({ id: item.id })
 						}}>
-						<DeleteIcon />
+						<DeleteOutlinedIcon />
 					</Button>
 				</div>
 			))}
