@@ -1,14 +1,12 @@
 import { useState, useEffect, useContext } from 'react'
-import WishlistContext from '@Store/wishlist-context'
 import CartContext from '@Store/cart-context'
 import Link from 'next/link'
 import { MongoClient, ObjectId } from 'mongodb'
 import { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import FavoriteIcon from '@mui/icons-material/Favorite'
 
+import Wishlist from '@Components/Wishlist/Wishlist'
 import Button from '@Components/common/Button/Button'
 import ItemSlide from '@Components/Items/Item/Item'
 import Stock from '@Components/Stock/Stock'
@@ -20,10 +18,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 
 const Item = ({ item, recommendedItems }) => {
-	const wishlistCtx = useContext(WishlistContext)
 	const cartCtx = useContext(CartContext)
-
-	const [itemOnWishlist, setItemOnWishList] = useState(true)
 
 	const [quantity, setQuantity] = useState(1)
 	const [price, setPrice] = useState(item.price)
@@ -45,42 +40,6 @@ const Item = ({ item, recommendedItems }) => {
 	}, [quantity, item.price])
 
 	const noStock = item.quantity === 0
-
-	const clickHandler = event => {
-		event.stopPropagation()
-
-		wishlistCtx.wishlist.some(wishlistItem => wishlistItem.id === item.id)
-			? wishlistCtx.removeItemFromWishlist({ id: item.id })
-			: wishlistCtx.addItemToWishlist({ id: item.id, title: item.title, price: item.price, images: item.images })
-	}
-
-	useEffect(() => {
-		setItemOnWishList(wishlistCtx.wishlist.some(wishlistItem => wishlistItem.id === item.id))
-	}, [wishlistCtx.wishlist])
-
-	const wishlistBtn = itemOnWishlist ? (
-		<div className={styles.wishlistAdded}>
-			<Button
-				type='icon'
-				sx={{
-					color: '#f7f7f7',
-				}}
-				onClick={clickHandler}>
-				<FavoriteIcon />
-			</Button>
-		</div>
-	) : (
-		<div className={styles.wishlist}>
-			<Button
-				type='icon'
-				sx={{
-					color: '#f7f7f7',
-				}}
-				onClick={clickHandler}>
-				<FavoriteBorderIcon />
-			</Button>
-		</div>
-	)
 
 	return (
 		<div className={styles.items}>
@@ -105,7 +64,7 @@ const Item = ({ item, recommendedItems }) => {
 						item.images.map(image => (
 							<SwiperSlide key={image}>
 								<img className={styles.image} src={image} alt={item.title} />
-								{wishlistBtn}
+								<Wishlist item={item} />
 							</SwiperSlide>
 						))}
 				</Swiper>
