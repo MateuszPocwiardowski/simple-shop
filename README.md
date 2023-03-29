@@ -31,7 +31,8 @@ https://so-simple-shop.vercel.app/
 
 ## TODO
 
-- Refactor wishlist
+- Refactor
+- Make modal more re-usable
 - Finish order form
 - Add sumarry order
 - Add logic for max quantity of items in cart
