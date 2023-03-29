@@ -9,6 +9,7 @@ const CartContext = createContext({
 	price: 0,
 	addItemToCart: () => {},
 	removeItemFromCart: () => {},
+	reduceQuantity: () => {},
 	completeOrder: () => {},
 })
 
@@ -30,7 +31,7 @@ export const CartContextProvider = ({ children }) => {
 			const updatedCartItem = {
 				...cart[cartItemIndex],
 				quantity: cart[cartItemIndex].quantity + quantity,
-				price: cart[cartItemIndex].price + price,
+				price: cart[cartItemIndex].price + price * quantity,
 			}
 
 			const updatedCart = [...cart]
@@ -38,7 +39,29 @@ export const CartContextProvider = ({ children }) => {
 
 			setCart(updatedCart)
 		} else {
-			setCart(prevState => [...prevState, { id, title, quantity, price }])
+			setCart(prevState => [...prevState, { id, title, quantity, price: price * quantity }])
+		}
+	}
+
+	const reduceQuantityOfProductInCartHandler = ({ id }) => {
+		const cartItemIndex = cart.findIndex(item => item.id === id)
+
+		if (cartItemIndex !== -1) {
+			const updatedCartItem = {
+				...cart[cartItemIndex],
+				quantity: cart[cartItemIndex].quantity - 1,
+				price: cart[cartItemIndex].price - cart[cartItemIndex].price / cart[cartItemIndex].quantity,
+			}
+
+			if (updatedCartItem.quantity <= 0) {
+				removeItemFromCartHandler({ id })
+				return
+			}
+
+			const updatedCart = [...cart]
+			updatedCart.splice(cartItemIndex, 1, updatedCartItem)
+
+			setCart(updatedCart)
 		}
 	}
 
@@ -72,6 +95,7 @@ export const CartContextProvider = ({ children }) => {
 		price,
 		addItemToCart: addItemToCartHandler,
 		removeItemFromCart: removeItemFromCartHandler,
+		reduceQuantity: reduceQuantityOfProductInCartHandler,
 		completeOrder: completeOrderHandler,
 	}
 

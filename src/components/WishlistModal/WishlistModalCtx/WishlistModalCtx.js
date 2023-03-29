@@ -2,7 +2,8 @@ import { useContext, Fragment } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import WishlistContext from '@Store/wishlist-context'
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
+import CartContext from '@Store/cart-context'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 
 import Button from '@Components/common/Button/Button'
@@ -12,6 +13,8 @@ import styles from './WishlistModalCtx.module.css'
 
 const WishlistModalCtx = ({ hideWishlistModalHander }) => {
 	const wishlistCtx = useContext(WishlistContext)
+	const cartCtx = useContext(CartContext)
+
 	const router = useRouter()
 
 	return (
@@ -40,8 +43,12 @@ const WishlistModalCtx = ({ hideWishlistModalHander }) => {
 
 					<p className={styles.price}>{toCurrency(item.price)}</p>
 
-					<Button type='icon'>
-						<ShoppingBagOutlinedIcon />
+					<Button
+						type='icon'
+						onClick={() => {
+							cartCtx.addItemToCart({ id: item.id, title: item.title, quantity: 1, price: item.price })
+						}}>
+						<ShoppingCartOutlinedIcon />
 					</Button>
 
 					<Button

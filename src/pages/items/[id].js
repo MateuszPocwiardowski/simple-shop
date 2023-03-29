@@ -32,7 +32,7 @@ const Item = ({ item, recommendedItems }) => {
 	}
 
 	const addToCartHandler = () => {
-		cartCtx.addItemToCart({ id: item.id, title: item.title, quantity, price })
+		cartCtx.addItemToCart({ id: item.id, title: item.title, quantity, price: item.price })
 	}
 
 	useEffect(() => {

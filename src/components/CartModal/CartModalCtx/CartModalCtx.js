@@ -1,4 +1,6 @@
 import React, { useContext } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 import CartContext from '@Store/cart-context'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 
@@ -9,6 +11,8 @@ import styles from './CartModalCtx.module.css'
 
 const CartModalCtx = ({ hideCartModalHandler }) => {
 	const cartCtx = useContext(CartContext)
+
+	const router = useRouter()
 
 	const proceedCheckoutHandler = event => {
 		event.preventDefault()
@@ -23,8 +27,38 @@ const CartModalCtx = ({ hideCartModalHandler }) => {
 		<React.Fragment>
 			{cartCtx.cart.map(item => (
 				<div className={styles.item} key={item.id}>
-					<p className={styles.title}>{item.title}</p>
-					<p className={styles.quantity}>{item.quantity}x</p>
+					<Link
+						className={styles.title}
+						href={`/items/${item.id}`}
+						onClick={() => {
+							hideCartModalHandler()
+							router.push('/items/' + item.id)
+						}}>
+						{item.title}
+					</Link>
+
+					<div className={styles.quantity}>
+						<button
+							className={styles.button}
+							onClick={() => {
+								cartCtx.addItemToCart({
+									id: item.id,
+									title: item.title,
+									quantity: 1,
+									price: item.price / item.quantity,
+								})
+							}}>
+							+
+						</button>
+						<p className={styles.amount}>{item.quantity}</p>
+						<button
+							className={styles.button}
+							onClick={() => {
+								cartCtx.reduceQuantity({ id: item.id })
+							}}>
+							-
+						</button>
+					</div>
 					<p className={styles.price}>{toCurrency(item.price)}</p>
 
 					<Button

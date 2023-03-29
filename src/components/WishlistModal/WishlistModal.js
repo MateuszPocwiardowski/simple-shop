@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import ReactModal from 'react-modal'
 import WishlistContext from '@Store/wishlist-context'
+
 import CloseIcon from '@mui/icons-material/Close'
 
 import Button from '@Components/common/Button/Button'

@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import CartContext from '@Store/cart-context'
 import Link from 'next/link'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 import WishlistModal from '@Components/WishlistModal/WishlistModal'
 import CartModal from '@Components/CartModal/CartModal'
@@ -48,7 +48,7 @@ const Navigation = () => {
 				</Button>
 
 				<Button type='icon' sx={{ position: 'relative' }} onClick={showCartModalHandler}>
-					<ShoppingBagOutlinedIcon />
+					<ShoppingCartOutlinedIcon />
 					{cartCtx.quantity > 0 && <p className={styles.quantity}>{cartCtx.quantity}</p>}
 				</Button>
 			</div>
