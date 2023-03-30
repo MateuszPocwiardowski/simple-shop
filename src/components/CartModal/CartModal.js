@@ -1,45 +1,53 @@
-import { useState, useEffect, useContext } from 'react'
-import ReactModal from 'react-modal'
+import { Fragment, useContext } from 'react'
 import CartContext from '@Store/cart-context'
-import CloseIcon from '@mui/icons-material/Close'
 
-import CartModalForm from './CartModalCtx/CartModalForm'
+import CartItem from './CartItem/CartItem'
+import Modal from '@Components/Modal/Modal'
+import ModalCtx from '@Components/Modal/ModalCtx/ModalCtx'
 import Button from '@Components/common/Button/Button'
-import CartModalCtx from './CartModalCtx/CartModalCtx'
+import toCurrency from '@Utils/toCurrency'
 
 import styles from './CartModal.module.css'
 
-ReactModal.setAppElement('#cartModal')
-
-const CartModal = ({ isCartModalShown, hideCartModalHandler }) => {
+const CartModal = ({ isOpen, onRequestClose }) => {
 	const cartCtx = useContext(CartContext)
 
+	const proceedCheckoutHandler = event => {
+		event.preventDefault()
+
+		console.log('Ordered!')
+		cartCtx.completeOrder()
+
+		onRequestClose()
+	}
+
+	const totalPrice = toCurrency(cartCtx.price)
+
 	return (
-		<ReactModal
-			style={{
-				overlay: { backgroundColor: 'rgba(0,0,0,.6)', backdropFilter: 'blur(2px)' },
-				content: {
-					inset: '20px',
-					maxWidth: '600px',
-					height: 'min-content',
-					margin: 'auto',
-					display: 'flex',
-					flexDirection: 'column',
-					backgroundColor: '#fbfafa',
-				},
-			}}
-			isOpen={isCartModalShown}
-			onRequestClose={hideCartModalHandler}>
-			<Button type='icon' sx={{ alignSelf: 'flex-end' }} onClick={hideCartModalHandler}>
-				<CloseIcon />
-			</Button>
+		<Modal isOpen={isOpen} onRequestClose={onRequestClose}>
+			<ModalCtx title='Your cart' onRequestClose={onRequestClose}>
+				{cartCtx.cart.length === 0 && (
+					<p className={styles.emptyCartText}>You do not have any products in your cart.</p>
+				)}
 
-			<h4 className={styles.title}>Your cart</h4>
+				{cartCtx.cart.length > 0 && (
+					<Fragment>
+						{cartCtx.cart.map(item => (
+							<CartItem key={item.title} item={item} totalPrice={totalPrice} onRequestClose={onRequestClose} />
+						))}
 
-			{cartCtx.cart.length === 0 && <p className={styles.emptyCartText}>You do not have any products in your cart.</p>}
+						<div className={styles.total}>
+							<p className={styles.totalTitle}>Total</p>
+							<p className={styles.totalPrice}>{totalPrice}</p>
+						</div>
 
-			{cartCtx.cart.length > 0 && <CartModalCtx hideCartModalHandler={hideCartModalHandler} />}
-		</ReactModal>
+						<Button type='contained' onClick={proceedCheckoutHandler}>
+							Proceed checkout
+						</Button>
+					</Fragment>
+				)}
+			</ModalCtx>
+		</Modal>
 	)
 }
 

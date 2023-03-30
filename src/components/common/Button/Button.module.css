@@ -42,26 +42,6 @@
 	font-family: inherit;
 }
 
-.text::after {
-	content: '';
-	position: absolute;
-	width: 100%;
-	left: 0;
-	bottom: 0.25rem;
-	border-bottom: 1px solid var(--color-gray-800);
-	transform: translateY(-50%) scaleX(0);
-	transform-origin: 0;
-	transition: transform 0.3s;
-}
-
-.text:hover {
-	background: none;
-}
-
-.text:hover::after {
-	transform: translateY(-50%) scaleX(100%);
-}
-
 .icon {
 	font-size: inherit;
 	color: inherit;

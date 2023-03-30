@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
-import CartContext from '@Store/cart-context'
 import Link from 'next/link'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import CartContext from '@Store/cart-context'
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
 import WishlistModal from '@Components/WishlistModal/WishlistModal'
 import CartModal from '@Components/CartModal/CartModal'
@@ -44,7 +44,7 @@ const Navigation = () => {
 
 			<div className={styles.items}>
 				<Button type='icon' sx={{ position: 'relative' }} onClick={showWishlistModalHander}>
-					<FavoriteBorderIcon />
+					<FavoriteBorderOutlinedIcon />
 				</Button>
 
 				<Button type='icon' sx={{ position: 'relative' }} onClick={showCartModalHandler}>
@@ -53,9 +53,8 @@ const Navigation = () => {
 				</Button>
 			</div>
 
-			<WishlistModal isWishlistModalShown={isWishlistModalShown} hideWishlistModalHander={hideWishlistModalHander} />
-
-			<CartModal isCartModalShown={isCartModalShown} hideCartModalHandler={hideCartModalHandler} />
+			<WishlistModal isOpen={isWishlistModalShown} onRequestClose={hideWishlistModalHander} />
+			<CartModal isOpen={isCartModalShown} onRequestClose={hideCartModalHandler} />
 		</nav>
 	)
 }

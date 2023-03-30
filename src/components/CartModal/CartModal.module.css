@@ -1,23 +1,21 @@
-.title {
-	color: var(--color-gray-800);
-	font-size: var(--font-size-m);
-	text-align: center;
-	margin-bottom: 1rem;
-}
-
-@media (min-width: 992px) {
-	.title {
-		font-size: var(--font-size-l);
-	}
-}
-
 .emptyCartText {
 	text-align: center;
 	margin-bottom: 1rem;
 }
 
-@media (min-width: 992px) {
-	.emptyCartText {
-		font-size: var(--font-size-m);
-	}
+.total {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 3fr 1fr 1fr 24px;
+	text-align: left;
+	margin: 0.5rem 0 2rem;
+}
+
+.totalTitle {
+	font-weight: var(--font-weight-bold);
+	grid-column: 3/3;
+}
+
+.totalPrice {
+	grid-column: 3/3;
 }
