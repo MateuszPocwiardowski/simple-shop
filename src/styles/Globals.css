@@ -57,3 +57,8 @@ a {
 	font-size: inherit;
 	font-family: inherit;
 }
+
+.swiper {
+	--swiper-navigation-color: var(--color-white);
+	--swiper-theme-color: var(--color-white);
+}

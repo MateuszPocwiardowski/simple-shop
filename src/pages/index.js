@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import Head from 'next/head'
 import { MongoClient } from 'mongodb'
 
@@ -9,10 +10,13 @@ import styles from '@Styles/Home.module.css'
 
 const Home = ({ items }) => {
 	return (
-		<>
+		<Fragment>
 			<Head>
 				<title>So simple shop</title>
-				<meta name='description' content='' />
+				<meta
+					name='description'
+					content="Welcome to so.simple.shop! We are your one-stop-shop for fancy products. Our products are of the highest quality and we pride ourselves on offering exceptional customer service. With a wide variety of products to choose from, you're sure to find something you love. Don't miss out on our latest occasion. Order now and enjoy fast, reliable shipping. Visit us today and discover why so.simple.shop is the best fancy shop around!"
+				/>
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
@@ -21,7 +25,7 @@ const Home = ({ items }) => {
 				<Items items={items} />
 				<Banner />
 			</main>
-		</>
+		</Fragment>
 	)
 }
 

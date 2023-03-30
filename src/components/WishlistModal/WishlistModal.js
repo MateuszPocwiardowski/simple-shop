@@ -14,7 +14,7 @@ const WishlistModal = ({ isOpen, onRequestClose }) => {
 		<Modal isOpen={isOpen} onRequestClose={onRequestClose}>
 			<ModalCtx title='Your wishlist' onRequestClose={onRequestClose}>
 				{wishlistCtx.wishlist.length === 0 && (
-					<p className={styles.emptyCartText}>You do not have any products on your wishlist.</p>
+					<p className={styles.emptyWishlistText}>You do not have any products on your wishlist.</p>
 				)}
 
 				{wishlistCtx.wishlist.length > 0 &&

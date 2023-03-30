@@ -7,7 +7,7 @@ import Button from '@Components/common/Button/Button'
 
 import styles from './CartItem.module.css'
 
-const CartItem = ({ item, totalPrice, onRequestClose }) => {
+const CartItem = ({ item, formattedPrice, onRequestClose }) => {
 	const cartCtx = useContext(CartContext)
 
 	const router = useRouter()
@@ -51,7 +51,7 @@ const CartItem = ({ item, totalPrice, onRequestClose }) => {
 					-
 				</button>
 			</div>
-			<p className={styles.price}>{totalPrice}</p>
+			<p className={styles.price}>{formattedPrice}</p>
 
 			<Button type='icon' onClick={removeProductFromCartHandler}>
 				<DeleteOutlinedIcon />

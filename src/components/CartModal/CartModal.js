@@ -21,7 +21,7 @@ const CartModal = ({ isOpen, onRequestClose }) => {
 		onRequestClose()
 	}
 
-	const totalPrice = toCurrency(cartCtx.price)
+	const formattedPrice = toCurrency(cartCtx.price)
 
 	return (
 		<Modal isOpen={isOpen} onRequestClose={onRequestClose}>
@@ -33,12 +33,12 @@ const CartModal = ({ isOpen, onRequestClose }) => {
 				{cartCtx.cart.length > 0 && (
 					<Fragment>
 						{cartCtx.cart.map(item => (
-							<CartItem key={item.title} item={item} totalPrice={totalPrice} onRequestClose={onRequestClose} />
+							<CartItem key={item.title} item={item} formattedPrice={formattedPrice} onRequestClose={onRequestClose} />
 						))}
 
 						<div className={styles.total}>
 							<p className={styles.totalTitle}>Total</p>
-							<p className={styles.totalPrice}>{totalPrice}</p>
+							<p className={styles.totalPrice}>{formattedPrice}</p>
 						</div>
 
 						<Button type='contained' onClick={proceedCheckoutHandler}>

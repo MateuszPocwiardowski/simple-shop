@@ -1,0 +1,21 @@
+.items {
+	width: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+	overflow: hidden;
+	z-index: 0;
+}
+
+.title {
+	text-align: left;
+	font-size: var(--font-size-m);
+	font-weight: var(--font-weight-medium);
+	margin-bottom: 2rem;
+}
+
+.swiperContainer {
+	width: 100%;
+	max-width: var(--max-width);
+	margin: 0 auto;
+	overflow: hidden;
+}

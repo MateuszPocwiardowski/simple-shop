@@ -1,23 +1,4 @@
-.title {
-	color: var(--color-gray-800);
-	font-size: var(--font-size-m);
-	text-align: center;
-	margin-bottom: 1rem;
-}
-
-@media (min-width: 992px) {
-	.title {
-		font-size: var(--font-size-l);
-	}
-}
-
 .emptyWishlistText {
 	text-align: center;
 	margin-bottom: 1rem;
-}
-
-@media (min-width: 992px) {
-	.emptyWishlistText {
-		font-size: var(--font-size-m);
-	}
 }
