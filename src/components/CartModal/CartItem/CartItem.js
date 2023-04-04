@@ -4,10 +4,11 @@ import CartContext from '@Store/cart-context'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 
 import Button from '@Components/common/Button/Button'
+import toCurrency from '@Utils/toCurrency'
 
 import styles from './CartItem.module.css'
 
-const CartItem = ({ item, formattedPrice, onRequestClose }) => {
+const CartItem = ({ item, onRequestClose }) => {
 	const cartCtx = useContext(CartContext)
 
 	const router = useRouter()
@@ -33,6 +34,8 @@ const CartItem = ({ item, formattedPrice, onRequestClose }) => {
 	const removeProductFromCartHandler = () => {
 		cartCtx.removeItemFromCart({ id: item.id })
 	}
+
+	const formattedPrice = toCurrency(item.price)
 
 	return (
 		<div className={styles.item}>

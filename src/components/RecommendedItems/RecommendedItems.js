@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import ItemSlide from '@Components/Items/Item/Item'
+import ItemSlide from '@Components/Item/Item'
 
 import styles from './RecommendedItems.module.css'
 import 'swiper/css'

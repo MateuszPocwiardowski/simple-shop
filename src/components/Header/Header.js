@@ -1,6 +1,6 @@
-import styles from './Hero.module.css'
+import styles from './Header.module.css'
 
-const HERO_DATA = [
+const HEADER_DATA = [
 	{
 		src: 'https://lh3.googleusercontent.com/p3RstY0klewDCFQPdhJfP_G67nqWaFcfF47jzjwzeMIIqU7Pnt-owUd1GheBd5UnKFRO0XpSV1RlQ_-6uahCvTXAeV3SsbryrQPrwc8LW7kDJqRTvAOjCvd7vANLf_cYy2RSS9SWjWZgw-ng6iNZCn2wtwAM58a5xszmC6MwzI916kGEpB5S7NAM-0ya9aL6',
 		alt: 'Interior Design',
@@ -19,14 +19,14 @@ const HERO_DATA = [
 	},
 ]
 
-const Hero = () => {
+const Header = () => {
 	return (
-		<section className={styles.hero}>
-			{HERO_DATA.map(({ src, alt }) => (
+		<section className={styles.header}>
+			{HEADER_DATA.map(({ src, alt }) => (
 				<img className={styles.image} key={alt} src={src} alt={alt} />
 			))}
 		</section>
 	)
 }
 
-export default Hero
+export default Header

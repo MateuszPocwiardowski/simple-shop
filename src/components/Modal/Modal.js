@@ -1,6 +1,7 @@
 import ReactModal from 'react-modal'
 
-import styles from './Modal.module.css'
+ReactModal.setAppElement('#cartModal')
+ReactModal.setAppElement('#wishlistModal')
 
 const Modal = ({ isOpen, children, onRequestClose }) => {
 	return (

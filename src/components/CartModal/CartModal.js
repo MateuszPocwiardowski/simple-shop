@@ -33,7 +33,7 @@ const CartModal = ({ isOpen, onRequestClose }) => {
 				{cartCtx.cart.length > 0 && (
 					<Fragment>
 						{cartCtx.cart.map(item => (
-							<CartItem key={item.title} item={item} formattedPrice={formattedPrice} onRequestClose={onRequestClose} />
+							<CartItem key={item.title} item={item} onRequestClose={onRequestClose} />
 						))}
 
 						<div className={styles.total}>

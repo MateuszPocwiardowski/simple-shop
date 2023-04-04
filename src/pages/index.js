@@ -1,9 +1,8 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
-import { MongoClient } from 'mongodb'
 
-import Hero from '@Components/Hero/Hero'
-import Items from '@Components/Items/Items'
+import Hero from '@Components/Header/Header'
+import Items from '@Components/ItemList/ItemList'
 import Banner from '@Components/Banner/Banner'
 
 import styles from '@Styles/Home.module.css'
@@ -32,15 +31,8 @@ const Home = ({ items }) => {
 export default Home
 
 export const getStaticProps = async () => {
-	const client = await MongoClient.connect(
-		'mongodb+srv://mpocwiardowski:tnmLqEI56WyjzMJU@cluster0.vlusofg.mongodb.net/cars?retryWrites=true&w=majority'
-	)
-
-	const db = client.db()
-	const itemsCollection = db.collection('products')
-	const items = await itemsCollection.find().toArray()
-
-	client.close()
+	const res = await fetch('http://localhost:3000/api/items')
+	const { items } = await res.json()
 
 	return {
 		props: {
@@ -49,6 +41,6 @@ export const getStaticProps = async () => {
 				...keys,
 			})),
 		},
-		revalidate: 1,
+		revalidate: 60,
 	}
 }

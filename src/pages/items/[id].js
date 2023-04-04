@@ -1,6 +1,5 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
-import { MongoClient, ObjectId } from 'mongodb'
 
 import ItemDetails from '@Components/ItemDetails/ItemDetails'
 import RecommendedItems from '@Components/RecommendedItems/RecommendedItems'
@@ -27,41 +26,22 @@ const Item = ({ item, category, recommendedItems }) => {
 export default Item
 
 export const getStaticPaths = async () => {
-	const client = await MongoClient.connect(
-		'mongodb+srv://mpocwiardowski:tnmLqEI56WyjzMJU@cluster0.vlusofg.mongodb.net/cars?retryWrites=true&w=majority'
-	)
-
-	const db = client.db()
-	const itemsCollection = db.collection('products')
-	const items = await itemsCollection.find().toArray()
-
-	client.close()
+	const res = await fetch('http://localhost:3000/api/items')
+	const { items } = await res.json()
 
 	return {
 		fallback: 'blocking',
-		paths: items.map(product => ({
-			params: { id: product?._id.toString() },
+		paths: items.map(item => ({
+			params: { id: item?._id.toString() },
 		})),
 	}
 }
 
 export const getStaticProps = async context => {
-	const client = await MongoClient.connect(
-		'mongodb+srv://mpocwiardowski:tnmLqEI56WyjzMJU@cluster0.vlusofg.mongodb.net/cars?retryWrites=true&w=majority'
-	)
+	const id = context.params.id
 
-	const { id: selectedId } = context.params
-
-	const db = client.db()
-	const itemsCollection = db.collection('products')
-
-	const item = await itemsCollection.findOne({
-		_id: new ObjectId(selectedId),
-	})
-
-	const recommendedItems = await itemsCollection.find({ category: item.category }).toArray()
-
-	client.close()
+	const res = await fetch(`http://localhost:3000/api/items/${id}`)
+	const { item, recommendedItems } = await res.json()
 
 	return {
 		props: {
@@ -80,5 +60,6 @@ export const getStaticProps = async context => {
 
 			category: item.category.toLowerCase(),
 		},
+		revalidate: 60,
 	}
 }

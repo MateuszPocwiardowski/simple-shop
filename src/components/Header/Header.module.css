@@ -1,4 +1,4 @@
-.hero {
+.header {
 	height: 60vh;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -22,7 +22,7 @@
 }
 
 @media (min-width: 992px) {
-	.hero {
+	.header {
 		grid-template-columns: repeat(4, 1fr);
 		grid-template-rows: repeat(2, 1fr);
 	}
