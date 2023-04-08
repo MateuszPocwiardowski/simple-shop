@@ -1,9 +1,15 @@
 import { MongoClient, ObjectId } from 'mongodb'
 
+const connectionURL = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER}.vlusofg.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`
+
+export const getBaseURL = () => {
+	const baseURL = process.env.NODE_ENV !== 'production' ? process.env.DEV_URL : process.env.PROD_URL
+
+	return baseURL
+}
+
 export const connectDatabase = async () => {
-	const client = await MongoClient.connect(
-		'mongodb+srv://mpocwiardowski:tnmLqEI56WyjzMJU@cluster0.vlusofg.mongodb.net/simpleShop?retryWrites=true&w=majority'
-	)
+	const client = await MongoClient.connect(connectionURL)
 
 	return client
 }

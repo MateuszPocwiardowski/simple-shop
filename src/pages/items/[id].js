@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import ItemDetails from '@Components/ItemDetails/ItemDetails'
 import RecommendedItems from '@Components/RecommendedItems/RecommendedItems'
+import { getBaseURL } from '@Utils/db'
 
 import styles from '@Styles/Items.module.css'
 
@@ -26,7 +27,9 @@ const Item = ({ item, category, recommendedItems }) => {
 export default Item
 
 export const getStaticPaths = async () => {
-	const res = await fetch('http://localhost:3000/api/items')
+	const baseURL = getBaseURL()
+
+	const res = await fetch(`${baseURL}/api/items`)
 	const { items } = await res.json()
 
 	return {

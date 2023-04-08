@@ -20,13 +20,14 @@ const handler = async (req, res) => {
 		} catch (error) {
 			res.status(500).json({ message: 'Loading data failed' })
 
+			client.close()
 			return
 		}
 
 		res.status(200).json({ item, recommendedItems })
 	}
 
-	await client.close()
+	client.close()
 }
 
 export default handler

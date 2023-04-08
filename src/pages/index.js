@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Hero from '@Components/Header/Header'
 import Items from '@Components/ItemList/ItemList'
 import Banner from '@Components/Banner/Banner'
+import { getBaseURL } from '@Utils/db'
 
 import styles from '@Styles/Home.module.css'
 
@@ -31,7 +32,9 @@ const Home = ({ items }) => {
 export default Home
 
 export const getStaticProps = async () => {
-	const res = await fetch('http://localhost:3000/api/items')
+	const baseURL = getBaseURL()
+
+	const res = await fetch(`${baseURL}/api/items`)
 	const { items } = await res.json()
 
 	return {
